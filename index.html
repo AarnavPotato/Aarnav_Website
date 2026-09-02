@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aarnav's Website</title>
+        <link rel="stylesheet" href="styles.css">
+    <h1>Aarnav's Website</h1>
+
+    <body>
+        <p>Welcome to my website it is very good</p>
+        <div class="counter-box">
+  <p>Total Website Visits</p>
+  <!-- The number will load inside this span -->
+  <span id="visit-count">Loading...</span>
+</div>
+
+<script>
+  // Replace 'yourcustomname' with your name/site name to make it unique!
+  const nameSpace = "yourcustomname"; 
+  const key = "homepage-visits";
+
+  // This hits the free CounterAPI to increment the count by 1
+  fetch(`https://counterapi.dev{nameSpace}/${key}/up`)
+    .then(response => response.json())
+    .then(data => {
+      // data.count holds the actual live global number from the server
+      document.getElementById('visit-count').innerText = data.count;
+    })
+    .catch(error => {
+      console.error('Error fetching counter:', error);
+      document.getElementById('visit-count').innerText = "Unavailable";
+    });
+</script>
+
+
+    </body>
+
+</html>
